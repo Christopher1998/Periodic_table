@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Periodic Table</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!--Font style exported from google.com. - Estilo de letra exportada de google.com-->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Sans+Extra+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <!--Principal container - Contenedor principal-->
+  <div class="general">
+    <!--container where the periodic table is rendered - Contenedor donde se renderiza la tabla periodica. -->
+    <div class="container">
+      <!-- Principal title - Titulo principal. -->
+      <h1 class="firstTitle">Tabla Periódica de los Elementos</h1>
+      <!--The elements in the periodic table are rendered within divs which are rendered in rows from 1 to 9 in order to define their positions.
+         Los elementos en la tabla periodica se renderizan dentro de divs los cuales se renderizan en filas del 1 al 9 para poder definir sus posiciones.-->
+      <div class="first floor">
+        <!-- Container in wich elements are rendered. - Contenedor en el cual se renderiza los elementos.-->
+        <div class="base one no_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span id="n" class="number">1</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span id="sn" class="sub_name">H</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a id="no" href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Hidr%C3%B3geno')"
+            class="element_name hl">Hidrogeno</a>
+          <!--Atomic mass. Masa atomica -->
+          <data id="an" class="atomic_number">1.008</data>
+        </div>
+        <!--Item preview. - Previsualizacion el item-->
+        <div class="example" id="exampleInfo">
+          <!--Numero atomico. - Atomic number -->
+          <span class="number"></span>
+
+          <!-- Symbol of element.- Simbolo del elemento.-->
+          <span class="sub_name"></span>
+          <!-- Name of element. - Nombre del elemento -->
+          <span href="#" class="element_name"></span>
+          <!--Atomic number. - Numero atomico. -->
+          <data class="atomic_number"></data>
+        </div>
+
+        <!-- Arrows. - Flechas -->
+        <img class="left_arrow1" src="images/left-arrow.png" alt="Flecha" />
+        <p class="P_NA">Número atómico</p>
+        <img class="left_arrow2" src="images/left-arrow.png" alt="Flecha" />
+        <p class="P_SQ">Símbolo químico</p>
+        <img class="left_arrow3" src="images/left-arrow.png" alt="Flecha" />
+        <p class="P_N">Nombre</p>
+        <img class="left_arrow4" src="images/left-arrow.png" alt="Flecha" />
+        <p class="P_MA">Masa atómica</p>
+
+        <!-- Contenedor en el cual se ven los mini cuadros donde se muestra el color por familia de elemento.
+             Container where the mini boxes are located according to the color of the element family.-->
+        <div class="infoBox">
+          <div class="divisionBox">
+            <div onclick="showElement(this)" class="mini_box alkali_metals"></div>
+            <p class="p_mini_box PMB1">metales alcalinos</p>
+            <div onclick="showElement(this)" class="mini_box alkaline_earth"></div>
+            <p class="p_mini_box PMB2">alcalinotérreos</p>
+            <div onclick="showElement(this)" class="mini_box other_metals"></div>
+            <p class="p_mini_box PMB3">otros metales</p>
+            <div onclick="showElement(this)" class="mini_box transition_metals"></div>
+            <p class="p_mini_box PMB4">metales de transición</p>
+            <div onclick="showElement(this)" class="mini_box lanthanides"></div>
+            <p class="p_mini_box PMB5">lantánidos</p>
+            <div onclick="showElement(this)" class="mini_box actinides"></div>
+            <p class="p_mini_box PMB6">actínidos</p>
+            <div onclick="showElement(this)" class="mini_box metalloids"></div>
+            <p class="p_mini_box PMB7">metaloides</p>
+          </div>
+          <div class="divisionBox2">
+            <div onclick="showElement(this)" class="mini_box no_metals"></div>
+            <p class="p_mini_box2 PMB8">no metales</p>
+            <div onclick="showElement(this)" class="mini_box halogens"></div>
+            <p class="p_mini_box2 PMB9">halógenos</p>
+            <div onclick="showElement(this)" class="mini_box noble_gases"></div>
+            <p class="p_mini_box2 PM10">gases nobles</p>
+            <div onclick="showElement(this)" class="mini_box boxTC mini-box-bkgrd1">
+              <p class="p_mini_box_align">Hg</p>
+            </div>
+            <p class="p_mini_box2 PMB11">líquidos a 20°C</p>
+            <div onclick="showElement(this)" class="mini_box boxTHC mini-box-bkgrd2">
+              <p class="p_mini_box_align">Ga</p>
+            </div>
+            <p class="p_mini_box2 PMB12">líquidos a 30°C</p>
+            <div onclick="showElement(this)" class="mini_box boxF mini-box-bkgrd3">
+              <p class="p_mini_box_align">Rb</p>
+            </div>
+            <p class="p_mini_box2 PMB13">líquidos a 40°C</p>
+            <div>
+              <img class="radioa_symbol" src="images/radioa_symbol.png" alt="Simbolo Radioactivo" />
+            </div>
+            <p class="p_mini_box2 PMB14">
+              masas de elementos radioactivos entre parentesis
+            </p>
+            <button class="btn-mostrar-tds" onclick="restoreColors()">
+              mostrar todos
+            </button>
+          </div>
+        </div>
+
+        <div class="base two noble_gases" onclick="showInfo(this)">
+          <span class="number">2</span>
+          <span class="sub_name">He</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Helio')" class="element_name hl">Helio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">4.0026</data>
+        </div>
+      </div>
+      <!--The elements in the periodic table are rendered within divs which are rendered in rows from 1 to 9 in order to define their positions.
+         Los elementos en la tabla periodica se renderizan dentro de divs los cuales se renderizan en filas del 1 al 9 para poder definir sus posiciones.-->
+      <div class="second floor">
+        <!-- Container in wich elements are rendered. - Contenedor en el cual se renderiza los elementos.-->
+        <div id="box2" class="base three alkali_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">3</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Li</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Litio')" class="element_name hl">Litio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">6.94</data>
+        </div>
+        <div class="base four alkaline_earth" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">4</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Be</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Berilio')" class="element_name hl">Berilio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">9.0122</data>
+        </div>
+        <div class="base five metalloids" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">5</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">B</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Boro')" class="element_name hl">Boro</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">10.81</data>
+        </div>
+        <div class="base six no_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">6</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">C</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Carbono')" class="element_name hl">Carbono</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">12.011</data>
+        </div>
+        <div class="base seven no_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">7</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">N</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Nitr%C3%B3geno')"
+            class="element_name hl">Nitrogeno</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">14.007</data>
+        </div>
+        <div class="base eight no_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">8</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">O</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Ox%C3%ADgeno')"
+            class="element_name hl">Oxigeno</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">15.999</data>
+        </div>
+        <div class="base nine halogens" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">9</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">F</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Fl%C3%BAor')" class="element_name hl">Fluor</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">18.998</data>
+        </div>
+        <div class="base ten noble_gases" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">10</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Ne</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Ne%C3%B3n')" class="element_name hl">Neon</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">20.180</data>
+        </div>
+      </div>
+      <!--The elements in the periodic table are rendered within divs which are rendered in rows from 1 to 9 in order to define their positions.
+         Los elementos en la tabla periodica se renderizan dentro de divs los cuales se renderizan en filas del 1 al 9 para poder definir sus posiciones.-->
+      <div class="third floor">
+        <!-- Container in wich elements are rendered. - Contenedor en el cual se renderiza los elementos.-->
+        <div class="base three alkali_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">11</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Na</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Sodio')" class="element_name hl">Sodio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">22.990</data>
+        </div>
+        <div class="base four alkaline_earth" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">12</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Mg</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Magnesio')"
+            class="element_name hl">Magnesio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">24.305</data>
+        </div>
+        <div class="base five other_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">13</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Al</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Aluminio')"
+            class="element_name hl">Aluminio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">26.982</data>
+        </div>
+        <div class="base six metalloids" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">14</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Si</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Silicio')" class="element_name hl">Silicio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">28.085</data>
+        </div>
+        <div class="base seven no_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">15</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">P</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/F%C3%B3sforo')"
+            class="element_name hl">Fosforo</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">30.974</data>
+        </div>
+        <div class="base eight no_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">16</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">S</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Azufre')" class="element_name hl">Azufre</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">32.06</data>
+        </div>
+        <div class="base nine halogens" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">17</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Cl</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Cloro')" class="element_name hl">Cloro</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">35.45</data>
+        </div>
+        <div class="base ten noble_gases" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">18</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Ar</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Arg%C3%B3n')" class="element_name hl">Argón</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">39.948</data>
+        </div>
+      </div>
+      <!--The elements in the periodic table are rendered within divs which are rendered in rows from 1 to 9 in order to define their positions.
+         Los elementos en la tabla periodica se renderizan dentro de divs los cuales se renderizan en filas del 1 al 9 para poder definir sus posiciones.-->
+      <div class="fourth floor">
+        <!-- Container in wich elements are rendered. - Contenedor en el cual se renderiza los elementos.-->
+        <div class="base oneFF alkali_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">19</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">K</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Potasio')" class="element_name hl">Potasio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">39.098</data>
+        </div>
+        <div class="base twoFF alkaline_earth" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">20</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Ca</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Calcio')" class="element_name hl">Calcio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">40.078</data>
+        </div>
+        <div class="base threeFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">21</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Sc</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Escandio')"
+            class="element_name hl">Escandio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">44.956</data>
+        </div>
+        <div class="base fourFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">22</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Ti</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Titanio')" class="element_name hl">Titanio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">47.867</data>
+        </div>
+        <div class="base fiveFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">23</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">V</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Vanadio')" class="element_name hl">Vanadio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">50.942</data>
+        </div>
+        <div class="base sixFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">24</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Cr</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Cromo')" class="element_name hl">Cromo</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">51.996</data>
+        </div>
+        <div class="base sevenFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">25</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Mn</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a hreflang="#" onclick="openWindow('https://es.wikipedia.org/wiki/Manganeso')"
+            class="element_name hl">Manganeso</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">54.938</data>
+        </div>
+        <div class="base eightFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">26</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Fe</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Hierro')" class="element_name hl">Hierro</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">55.845</data>
+        </div>
+        <div class="base nineFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">27</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Co</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Cobalto')" class="element_name hl">Cobalto</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">58.933</data>
+        </div>
+        <div class="base tenFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">28</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Ni</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/N%C3%ADquel')"
+            class="element_name hl">Niquel</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">58.693</data>
+        </div>
+        <div class="base elevenFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">29</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Cu</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Cobre')" class="element_name hl">Cobre</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">63.546</data>
+        </div>
+        <div class="base twelveFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">30</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Zn</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Zinc')" class="element_name hl">Zinc</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">65.38</data>
+        </div>
+        <div class="base thirteen other_metals boxTHC" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number reset">31</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Ga</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Galio')" class="element_name hl">Galio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number reset">69.723</data>
+        </div>
+        <div class="base fourteen metalloids" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">32</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Ge</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Germanio')"
+            class="element_name hl">Germanio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">72.630</data>
+        </div>
+        <div class="base fifteen metalloids" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">33</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">As</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Ars%C3%A9nico')"
+            class="element_name hl">Arsénico</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">74.922</data>
+        </div>
+        <div class="base sixteen no_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">34</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Se</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Selenio')" class="element_name hl">Selenio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">78.971</data>
+        </div>
+        <div class="base seventeen halogens boxTC" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number reset">35</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Br</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Bromo')" class="element_name hl">Bromo</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number reset">79.904</data>
+        </div>
+        <div class="base eighteen noble_gases" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">36</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Kr</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Kript%C3%B3n')"
+            class="element_name hl">Kriptón</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">83.798</data>
+        </div>
+      </div>
+      <!--The elements in the periodic table are rendered within divs which are rendered in rows from 1 to 9 in order to define their positions.
+         Los elementos en la tabla periodica se renderizan dentro de divs los cuales se renderizan en filas del 1 al 9 para poder definir sus posiciones.-->
+      <div class="fifth floor">
+        <!-- Container in wich elements are rendered. - Contenedor en el cual se renderiza los elementos.-->
+        <div class="base oneFF alkali_metals boxF" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number reset">37</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Rb</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Rubidio')" class="element_name hl">Rubidio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number reset">85.468</data>
+        </div>
+        <div class="base twoFF alkaline_earth" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">38</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Sr</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Estroncio')"
+            class="element_name hl">Estroncio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">87.62</data>
+        </div>
+        <div class="base threeFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">39</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Y</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Itrio')" class="element_name hl">Itrio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">88.906</data>
+        </div>
+        <div class="base fourFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">40</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Zr</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Circonio')"
+            class="element_name hl">Circonio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">91.224</data>
+        </div>
+        <div class="base fiveFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">41</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Nb</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Niobio')" class="element_name hl">Niobio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">92.906</data>
+        </div>
+        <div class="base sixFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">42</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Mo</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Molibdeno')"
+            class="element_name hl">Molibdeno</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">95.95</data>
+        </div>
+        <div class="base sevenFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">43</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Tc</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Tecnecio')"
+            class="element_name hl">Tecnecio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(98)</data>
+        </div>
+        <div class="base eightFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">44</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Ru</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Rutenio')" class="element_name hl">Rutenio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">101.07</data>
+        </div>
+        <div class="base nineFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">45</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Rh</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Rodio')" class="element_name hl">Rodio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">102.91</data>
+        </div>
+        <div class="base tenFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">46</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Pd</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Paladio')" class="element_name hl">Paladio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">106.42</data>
+        </div>
+        <div class="base elevenFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">47</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Ag</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Plata')" class="element_name hl">Plata</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">107.87</data>
+        </div>
+        <div class="base twelveFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">48</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Cd</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Cadmio')" class="element_name hl">Cadmio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">112.41</data>
+        </div>
+        <div class="base thirteen other_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">49</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">In</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Indio_(elemento)')"
+            class="element_name hl">Indio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">114.82</data>
+        </div>
+        <div class="base fourteen other_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">50</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Sn</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Esta%C3%B1o')"
+            class="element_name hl">Estaño</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">118.71</data>
+        </div>
+        <div class="base fifteen metalloids" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">51</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Sb</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Antimonio')"
+            class="element_name hl">Antimonio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">121.76</data>
+        </div>
+        <div class="base sixteen metalloids" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">52</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Te</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Telurio')" class="element_name hl">Telurio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">127.60</data>
+        </div>
+        <div class="base seventeen halogens" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">53</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">I</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Yodo')" class="element_name hl">Yodo</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">126.90</data>
+        </div>
+        <div class="base eighteen noble_gases" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">54</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Xe</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Xen%C3%B3n')" class="element_name hl">Xenón</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">131.29</data>
+        </div>
+      </div>
+      <!--The elements in the periodic table are rendered within divs which are rendered in rows from 1 to 9 in order to define their positions.
+         Los elementos en la tabla periodica se renderizan dentro de divs los cuales se renderizan en filas del 1 al 9 para poder definir sus posiciones.-->
+      <div class="sixth floor">
+        <!-- Container in wich elements are rendered. - Contenedor en el cual se renderiza los elementos.-->
+        <div class="base oneFF alkali_metals boxTHC" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number reset">55</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Cs</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Cesio')" class="element_name hl">Cesio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number reset">132.91</data>
+        </div>
+        <div class="base twoFF alkaline_earth" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">56</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Ba</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Bario')" class="element_name hl">Bario</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">137.33</data>
+        </div>
+        <div class="base threeFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">71</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Lu</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Lutecio')" class="element_name hl">Lutecio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">174.97</data>
+        </div>
+        <div class="base fourFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">72</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Hf</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Hafnio')" class="element_name hl">Hafnio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">178.49</data>
+        </div>
+        <div class="base fiveFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">73</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Ta</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/T%C3%A1ntalo_(elemento)')"
+            class="element_name hl">Tántalo</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">180.95</data>
+        </div>
+        <div class="base sixFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">74</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">W</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Wolframio')"
+            class="element_name hl">Wolframio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">183.84</data>
+        </div>
+        <div class="base sevenFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">75</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Re</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Renio')" class="element_name hl">Renio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">186.21</data>
+        </div>
+        <div class="base eightFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">76</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Os</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Osmio')" class="element_name hl">Osmio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">190.23</data>
+        </div>
+        <div class="base nineFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">77</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Ir</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Iridio')" class="element_name hl">Iridio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">192.22</data>
+        </div>
+        <div class="base tenFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">78</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Pt</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Platino')" class="element_name hl">Platino</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">195.08</data>
+        </div>
+        <div class="base elevenFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">79</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Au</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Oro')" class="element_name hl">Oro</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">196.97 </data>
+        </div>
+        <div class="base twelveFF transition_metals boxTC" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number reset">80</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Hg</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Mercurio_(elemento)')"
+            class="element_name hl">Mercurio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number reset">200.59</data>
+        </div>
+        <div class="base thirteen other_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">81</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Tl</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Talio')" class="element_name hl">Talio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">204.38</data>
+        </div>
+        <div class="base fourteen other_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">82</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Pb</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Plomo')" class="element_name hl">Plomo</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">207.2 </data>
+        </div>
+        <div class="base fifteen other_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">83</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Bi</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Bismuto')" class="element_name hl">Bismuto</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">208.98</data>
+        </div>
+        <div class="base sixteen metalloids" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">84</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Po</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Polonio')" class="element_name hl">Polonio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(209)</data>
+        </div>
+        <div class="base seventeen halogens" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">85</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">At</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Astato')" class="element_name hl">Astato</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(210) </data>
+        </div>
+        <div class="base eighteen noble_gases" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">86</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Rn</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Radon')" class="element_name hl">Radon</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(222) </data>
+        </div>
+      </div>
+      <!--The elements in the periodic table are rendered within divs which are rendered in rows from 1 to 9 in order to define their positions.
+         Los elementos en la tabla periodica se renderizan dentro de divs los cuales se renderizan en filas del 1 al 9 para poder definir sus posiciones.-->
+      <div class="seventh floor">
+        <!-- Container in wich elements are rendered. - Contenedor en el cual se renderiza los elementos.-->
+        <div class="base oneFF alkali_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">87</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Fr</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Francio')" class="element_name hl">Francio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(223) </data>
+        </div>
+        <div class="base twoFF alkaline_earth" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">88</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Ra</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#"
+            onclick="openWindow('https://es.wikipedia.org/wiki/Radio_(elemento)#:~:text=El%20radio%20es%20un%20elemento,su%20n%C3%BAmero%20at%C3%B3mico%20es%2088.&text=Valores%20en%20el%20SI%20y,que%20se%20indique%20lo%20contrario.')"
+            class="element_name hl">Radio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(226) </data>
+        </div>
+        <div class="base threeFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">103</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Lr</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Lawrencio')"
+            class="element_name hl">Lawrencio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(266) </data>
+        </div>
+        <div class="base fourFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">104</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Rf</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Rutherfordio')"
+            class="element_name hl">Rutherfordio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(267) </data>
+        </div>
+        <div class="base fiveFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">105</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Db</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Dubnio')" class="element_name hl">Dubnio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(268) </data>
+        </div>
+        <div class="base sixFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">106</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Sg</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Seaborgio')"
+            class="element_name hl">Seaborgio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(269) </data>
+        </div>
+        <div class="base sevenFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">107</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Bh</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Bohrio')" class="element_name hl">Bohrio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(270) </data>
+        </div>
+        <div class="base eightFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">108</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Hs</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Hasio')" class="element_name hl">Hasio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(277) </data>
+        </div>
+        <div class="base nineFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">109</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Mt</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Meitnerio')"
+            class="element_name hl">Meitnerio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(278) </data>
+        </div>
+        <div class="base tenFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">110</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Ds</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Darmstatio')"
+            class="element_name hl">Darmstatio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(281) </data>
+        </div>
+        <div class="base elevenFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">111</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Rg</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Roentgenio')"
+            class="element_name hl">Roentgenio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(282) </data>
+        </div>
+        <div class="base twelveFF transition_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">112</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Cn</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Copernicio')"
+            class="element_name hl">Copernicio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(285) </data>
+        </div>
+        <div class="base thirteen other_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">113</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Nh</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Nihonio')" class="element_name hl">Nihonio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(286) </data>
+        </div>
+        <div class="base fourteen other_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">114</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Fl</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Flerovio')"
+            class="element_name hl">Flerovio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(289) </data>
+        </div>
+        <div class="base fifteen other_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">115</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Mc</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Moscovio')"
+            class="element_name hl">Moscovio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(290)</data>
+        </div>
+        <div class="base sixteen other_metals" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">116</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Lv</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Livermorio')"
+            class="element_name hl">Livermorio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(293) </data>
+        </div>
+        <div class="base seventeen halogens" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">117</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Ts</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Teneso')" class="element_name hl">Teneso</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(294) </data>
+        </div>
+        <div class="base eighteen noble_gases" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">118</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Og</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Oganes%C3%B3n')"
+            class="element_name hl">Oganesón</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(294) </data>
+        </div>
+      </div>
+      <!--The elements in the periodic table are rendered within divs which are rendered in rows from 1 to 9 in order to define their positions.
+         Los elementos en la tabla periodica se renderizan dentro de divs los cuales se renderizan en filas del 1 al 9 para poder definir sus posiciones.-->
+      <div class="eighth floor">
+        <!-- Container in wich elements are rendered. - Contenedor en el cual se renderiza los elementos.-->
+        <div class="base fiveFF lanthanides" onclick="showInfo(this)">
+          <span class="number">57</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">La</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Lantano')" class="element_name hl">Lantano</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">138.91</data>
+        </div>
+        <div class="base sixFF lanthanides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">58</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Ce</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Cerio')" class="element_name hl">Cerio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">140.12</data>
+        </div>
+        <div class="base sevenFF lanthanides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">59</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Pr</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Praseodimio')"
+            class="element_name hl">Praseodimio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">140.91</data>
+        </div>
+        <div class="base eightFF lanthanides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">60</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Nd</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Neodimio')"
+            class="element_name hl">Neodimio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">144.24</data>
+        </div>
+        <div class="base nineFF lanthanides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">61</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Pm</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Prometio')"
+            class="element_name hl">Prometio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(145)</data>
+        </div>
+        <div class="base tenFF lanthanides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">62</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Sm</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Samario')" class="element_name hl">Samario</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">150.36</data>
+        </div>
+        <div class="base elevenFF lanthanides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">63</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Eu</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Europio')" class="element_name hl">Europio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">151.96</data>
+        </div>
+        <div class="base twelveFF lanthanides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">64</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Gd</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Gadolinio')"
+            class="element_name hl">Gadolinio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">157.25</data>
+        </div>
+        <div class="base thirteen lanthanides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">65</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Tb</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Terbio')" class="element_name hl">Terbio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">158.93</data>
+        </div>
+        <div class="base fourteen lanthanides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">57</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Dy</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Disprosio')"
+            class="element_name hl">Disprosio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">162.50</data>
+        </div>
+        <div class="base fifteen lanthanides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">67</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Ho</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Holmio')" class="element_name hl">Holmio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">164.93</data>
+        </div>
+        <div class="base sixteen lanthanides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">68</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Er</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Erbio')" class="element_name hl">Erbio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">167.26</data>
+        </div>
+        <div class="base seventeen lanthanides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">69</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Tm</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Tulio')" class="element_name hl">Tulio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">168.93</data>
+        </div>
+        <div class="base eighteen lanthanides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">70</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Yb</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Iterbio')" class="element_name hl">Iterbio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">173.05</data>
+        </div>
+      </div>
+      <!--The elements in the periodic table are rendered within divs which are rendered in rows from 1 to 9 in order to define their positions.
+         Los elementos en la tabla periodica se renderizan dentro de divs los cuales se renderizan en filas del 1 al 9 para poder definir sus posiciones.-->
+      <div class="nineth floor">
+        <!-- Container in wich elements are rendered. - Contenedor en el cual se renderiza los elementos.-->
+        <div class="base fiveFF actinides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">89</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Ac</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Actinio')" class="element_name hl">Actinio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(227)</data>
+        </div>
+        <div class="base sixFF actinides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">90</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Th</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Torio')" class="element_name hl">Torio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">232.04</data>
+        </div>
+        <div class="base sevenFF actinides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">91</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Pa</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Protactinio')"
+            class="element_name hl">Protactinio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">231.04</data>
+        </div>
+        <div class="base eightFF actinides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">92</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">U</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Uranio')" class="element_name hl">Uranio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">238.03</data>
+        </div>
+        <div class="base nineFF actinides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">93</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Np</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Neptunio')"
+            class="element_name hl">Neptunio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(237)</data>
+        </div>
+        <div class="base tenFF actinides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">94</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Pu</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/plutonio')"
+            class="element_name hl">Plutonio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(244)</data>
+        </div>
+        <div class="base elevenFF actinides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">95</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Am</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Americio')"
+            class="element_name hl">Americio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(244)</data>
+        </div>
+        <div class="base twelveFF actinides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">96</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Cm</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Curio')" class="element_name hl">Curio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(247)</data>
+        </div>
+        <div class="base thirteen actinides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">97</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Bk</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Berkelio')"
+            class="element_name hl">Berkelio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(247)</data>
+        </div>
+        <div class="base fourteen actinides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">98</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Cf</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Californio')"
+            class="element_name hl">Californio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(251)</data>
+        </div>
+        <div class="base fifteen actinides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">99</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Es</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Einstenio')"
+            class="element_name hl">Einstenio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(252)</data>
+        </div>
+        <div class="base sixteen actinides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">100</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Fm</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Fermio')" class="element_name hl">Fermio</a>
+          <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(257)</data>
+        </div>
+        <div class="base seventeen actinides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">101</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">Md</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Mendelevio')"
+            class="element_name hl">Mendelevio</a>
+            <!--Atomic mass. Masa atomica -->
+          <data class="atomic_number">(258)</data>
+        </div>
+        <div class="base eighteen actinides" onclick="showInfo(this)">
+          <!--Atomic number - Numero atomico.-->
+          <span class="number">102</span>
+          <!--Symbol of element - Simbolo del elemento -->
+          <span class="sub_name">No</span>
+          <!--Name of element with hyperlink - Nombre del elemento con hipervinculo-->
+          <a href="#" onclick="openWindow('https://es.wikipedia.org/wiki/Nobelio')" class="element_name hl">Nobelio</a>
+          <data class="atomic_number">(259)</data>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+<footer>
+  <p>&copy; 2024 Christopher Jimenez. All rights reserved.</p>
+</footer>
+
+</html>

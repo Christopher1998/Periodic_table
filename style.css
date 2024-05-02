@@ -1,0 +1,558 @@
+body {
+  font-family: "Fira Sans Extra Condensed", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+p,
+span,
+data {
+  cursor: pointer; /* Para que el cursor se comporte como puntero al pasar sobre los elementos */
+  user-select: none; /* Deshabilita la selección de texto para todos los elementos */
+  pointer-events: none; /* Desactiva los eventos del puntero para todos los elementos */
+}
+footer {
+  text-align: right; /* Alinea el contenido a la derecha */
+  margin-top: 5pc;/*Margen superior*/
+  margin-right: 0;
+}
+
+/*Div contenedor principal*/
+/*Principal div container*/
+.general {
+  width: 1300px;
+  height: 800px;
+  margin: auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+
+/*Div contenedor en el cual esta mostrado la tabla periodica.*/
+/*Container div in which shows the periodic table*/
+.container {
+  position: relative;
+  height: 600px;
+  width: 1166px;
+}
+
+/*Encargada de dar forma a los divs donde viene contenidos los elementos quimicos.*/
+/*Shapes the container where each chemical element goes.*/
+.base {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  transition: transform 0.1s;
+  z-index: 1;
+}
+
+.base:hover {
+  z-index: 2;
+}
+
+.base::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ajusta la sombra según tus necesidades */
+  transition: box-shadow 0.1s;
+  z-index: -1; /* Se asegura que la sombra esté detrás del elemento */
+}
+
+.base:hover::after {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8); /* Ajusta la sombra al hacer hover */
+}
+/*This container*/
+.example {
+  width: 120px;
+  height: 120px;
+  border: 3px solid black;
+  position: absolute;
+  left: 147px;
+  top: 50px;
+  background-color: #f5bee3;
+}
+
+/*Alineacion de parrafos y colores*/
+.mini_box {
+  width: 20px;
+  height: 20px;
+  margin: 3px;
+}
+.divisionBox2 {
+  position: relative;
+  right: 129px;
+}
+.p_mini_box {
+  font-size: small;
+  position: absolute;
+  left: 28px;
+}
+.p_mini_box2 {
+  font-size: small;
+  position: absolute;
+  left: 28px;
+}
+.mini_box:hover {
+  filter: brightness(0.8); /* Disminuir el brillo al 80% */
+}
+
+
+/*Esta clase se encarga de darle forma al cuadro de informacion del los grupos de elementos por color
+This class is responsible for shaping the information box of the groups of elements by color.
+*/
+.infoBox {
+  width: 303px;
+  height: 193px;
+  position: absolute;
+  right: 571px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/*Estas clases fueros creadas para ordenar el nombre de los elementos en los mini cuadros con color*/
+/*These classes were created to order the name of the elements in the mini boxes by color*/
+.PMB1 {
+  bottom: 159px;
+}
+.PMB2 {
+  bottom: 133px;
+}
+.PMB3 {
+  bottom: 107px;
+}
+.PMB4 {
+  bottom: 81px;
+}
+.PMB5 {
+  bottom: 55px;
+}
+.PMB6 {
+  bottom: 30px;
+}
+.PMB7 {
+  bottom: 7px;
+}
+
+.PMB8 {
+  bottom: 159px;
+  width: 56px;
+}
+.PMB9 {
+  bottom: 135px;
+}
+.PM10 {
+  width: 66px;
+  bottom: 111px;
+}
+.PMB11 {
+  width: 82px;
+  bottom: 87px;
+}
+.PMB12 {
+  width: 82px;
+  bottom: 63px;
+}
+.PMB13 {
+  width: 82px;
+  bottom: 39px;
+}
+.PMB14 {
+  font-size: small;
+  top: 133px;
+  width: 104px;
+}
+.PMB15 {
+  position: relative;
+  left: 23px;
+  bottom: 11px;
+  font-size: small;
+}
+.radioa_symbol {
+  width: 23px;
+  height: 23px;
+}
+
+
+/*Atomic Number*/
+/*Numero atomico*/
+.number {
+  text-align: right;
+  display: block;
+  font-size: 11px;
+  margin-right: 3px;
+}
+
+/*Simbolo del elemento*/
+/*Element symbol*/
+.sub_name {
+  text-align: left;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 3px;
+  font-weight: 100;
+}
+
+/*Nombre del elemento*/
+/*Element name*/
+.element_name {
+  font-size: 11px;
+  display: flex;
+  margin-left: 9px;
+}
+
+/*Numero atomico del elemento*/
+/*Atomic number element*/
+.atomic_number {
+  font-size: 10px;
+  display: flex;
+  margin-left: 3px;
+}
+
+
+/*Estas clases fueron creadas para mostrar el elemento seleccionado en grande*/
+/*These classes were created to display the selected element in large*/
+.number1 {
+  text-align: right;
+  display: block;
+  font-size: 22px;
+}
+.sub_name1 {
+  text-align: left;
+  margin-left: 10px;
+  font-size: 30px;
+  font-weight: 800;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.element_name1 {
+  font-size: 23px;
+  text-align: left;
+}
+.atomic_number1 {
+  font-size: 15px;
+  text-align: left;
+  margin-left: 9px;
+}
+/*Aqui termina las clases que fueron creadas para mostrar el elemento en grande*/
+/*Here ends the classes that were created to display the element in large*/
+
+
+/*Clases para darle color a los contenedores que muestran los elementos*/
+/*Classes to give color to the containers that display the elements*/
+.no_metals {
+  background-color: #c7dcee;
+  border: 1.5px solid #4480c2;
+}
+.noble_gases {
+  background-color: #c9c8d8;
+  border: 1.5px solid #885dac;
+}
+.alkali_metals {
+  background-color: #f2b3b7;
+  border: 1.5px solid #e32436;
+}
+.alkaline_earth {
+  background-color: #fae4c7;
+  border: 1.5px solid #ed951e;
+}
+.lanthanides {
+  background-color: #f9e0ed;
+  border: 1.5px solid #af59a5;
+}
+
+.halogens {
+  background-color: #d8cae3;
+  border: 1.5px solid #774f84;
+}
+.other_metals {
+  background-color: #d0ecd2;
+  border: 1.5px solid #5fbd58;
+}
+.metalloids {
+  background-color: #c5ebfb;
+  border: 1.5px solid #56afe3;
+}
+.transition_metals {
+  background-color: #fdfcbe;
+  border: 1.5px solid #f7de00;
+}
+.actinides {
+  background-color: #f5bee3;
+  border: 1.5px solid #e10267;
+}
+
+/*This is where the color filling for the element containers ends.*/
+/**Aquí termina el relleno de color de los contenedores de elementos./
+
+/*Hyper link class*/
+.hl {
+  color: black;
+  text-decoration: none;
+}
+.hl:hover {
+  color: blue;
+  text-decoration: underline;
+}
+
+/*Primer titulo principal*/
+/*First principal title*/
+.firstTitle {
+  position: absolute;
+  left: 358px;
+  bottom: 600px;
+  font-family: Times, "Times New Roman", Georgia, serif;
+}
+
+/*Crea los pisos para ubicar cada elemento de la tabla periodica*/
+/*Create the floors to locate each element of the periodic table*/
+.floor {
+  width: 1350px;
+  height: auto;
+  position: absolute;
+}
+/*Clases para ir ubicando los contenedores de los elementos*/
+/*Classes for locate the element container*/
+.first {
+  top: 0;
+}
+.second {
+  top: 65px;
+}
+.third {
+  top: 130px;
+}
+.fourth {
+  top: 195px;
+}
+.fifth {
+  top: 260px;
+}
+.sixth {
+  top: 325px;
+}
+.seventh {
+  top: 390px;
+}
+.eighth {
+  top: 475px;
+}
+.nineth {
+  top: 540px;
+}
+.one {
+  left: 0;
+}
+.two {
+  left: 1105px;
+}
+.three {
+  left: 0;
+}
+.four {
+  left: 65px;
+}
+.five {
+  left: 780px;
+}
+.six {
+  left: 845px;
+}
+.seven {
+  left: 910px;
+}
+.eight {
+  left: 975px;
+}
+.nine {
+  left: 1040px;
+}
+.ten {
+  left: 1105px;
+}
+.oneFF {
+  left: 0;
+}
+.twoFF {
+  left: 65px;
+}
+.threeFF {
+  left: 130px;
+}
+.fourFF {
+  left: 195px;
+}
+.fiveFF {
+  left: 260px;
+}
+.sixFF {
+  left: 325px;
+}
+.sevenFF {
+  left: 390px;
+}
+.eightFF {
+  left: 455px;
+}
+.nineFF {
+  left: 520px;
+}
+.tenFF {
+  left: 585px;
+}
+.elevenFF {
+  left: 650px;
+}
+.twelveFF {
+  left: 715px;
+}
+.thirteen {
+  left: 780px;
+}
+.fourteen {
+  left: 845px;
+}
+.fifteen {
+  left: 910px;
+}
+.sixteen {
+  left: 975px;
+}
+.seventeen {
+  left: 1040px;
+}
+.eighteen {
+  left: 1105px;
+}
+
+/*Flechas para el elemento de visualizacion de elemento grande*/
+/*Arrows for large element display element*/
+.left_arrow1 {
+  width: 80px;
+  height: 5px;
+  position: absolute;
+  left: 280px;
+  top: 63px;
+}
+.left_arrow2 {
+  width: 80px;
+  height: 5px;
+  position: absolute;
+  left: 280px;
+  top: 99px;
+}
+.left_arrow3 {
+  width: 80px;
+  height: 5px;
+  position: absolute;
+  left: 280px;
+  top: 129px;
+}
+.left_arrow4 {
+  width: 80px;
+  height: 5px;
+  position: absolute;
+  left: 280px;
+  top: 154px;
+}
+/*Parrafo numero atomico en el div ejemplo*/
+.P_NA {
+  position: absolute;
+  left: 363px;
+  top: 39px;
+}
+.P_SQ {
+  position: absolute;
+  left: 363px;
+  top: 73px;
+}
+.P_N {
+  position: absolute;
+  left: 363px;
+  top: 103px;
+}
+.P_MA {
+  position: absolute;
+  left: 363px;
+  top: 129px;
+}
+.hidden {
+  display: none;
+}
+  /*Metales que se derriten en un rango de 20 grados Celsius a 40 grados celsius* color aqua = 20grados, color azul = 30 grados, rojo = 40 grados*/
+  /*boxTC = caja que contiene un elemento que esta liquido a 20 grados celsius*/
+  /*boxTHC = caja que contiene un elemento que esta liquido a 30 grados celsius*/
+  /*boxF = caja que contiene un elemento que esta liquido a 40 grados celsius*/
+  /*Metals that melt in a range of 20 degrees Celsius to 40 degrees Celsius* aqua color = 20 degrees, blue = 30 degrees, red = 40 degrees*/
+/*boxTC = box containing an element that is liquid at 20 degrees Celsius*/
+/*boxTHC = box containing an element that is liquid at 30 degrees Celsius*/
+/*boxF = box containing an element that is liquid at 40 degrees Celsius*/
+.boxTC {
+  color: rgb(64, 207, 207);
+}
+.boxTHC {
+  color: #4e4eff;
+}
+.boxF {
+  color: #f75050;
+}
+.reset {
+  color: black;
+}
+
+
+
+.mini-box-bkgrd1 {
+  background-color: teal;
+}
+.mini-box-bkgrd2 {
+  background-color: steelblue;
+}
+.mini-box-bkgrd3 {
+  background-color: firebrick;
+}
+.p_mini_box_align {
+  text-align: center;
+  display: inline;
+}
+
+
+/*Estas clases fueron creadas para a la hora de elegir una familia que se aplique un color global para las que no estan seleccionadas*/
+/*These classes were created so that when choosing a family a global color is applied to those that are not selected*/
+.border-only {
+  background-color: transparent;
+  border: 1.5px solid black; /* Establece el grosor y el color del borde */
+}
+.border-only:hover {
+  background-color: transparent;
+  background-color: rgba(128, 128, 128, 0.142); /* Color de fondo con transparencia */
+}
+
+/*Boton de mostrar todos los elementos*/
+/*Button for display all elements*/
+.btn-mostrar-tds {
+  position: absolute;
+    top: 3px;
+    left: 158px;
+    background-color: black;
+    color: white;
+    border: 1px solid rgb(81, 81, 79);
+    font-family: bebas-neue-regular;
+}
+.btn-mostrar-tds:hover {
+  background-color: gray;
+}
+
+/*Imagen de elementos radioactivos*/
+.radioaElements {
+  background-image: url("/images/en-nuclr.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
